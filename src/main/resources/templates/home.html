@@ -12,7 +12,69 @@
     <nav th:replace="fragments/fragment :: navbar"></nav>
 
     <div class="container-fluid">
-        <h2>Hello!</h2>
+        <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + ' !' ">Login as</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Update Password
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/user/updatePassword}" method="POST">
+                            <input type="hidden" name="username" th:value="${#httpServletRequest.remoteUser}">
+                            <div class="row form-group">
+                                <label class="col-sm-4">Password Lama</label>
+                                <input class="col-sm-8" type="password" name="passwordLama">
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4">Password Baru: </label>
+                                <input class="col-sm-8" type="password" name="passwordBaru">
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4">Konfirmasi Password Baru: </label>
+                                <input class="col-sm-8" type="password" name="passwordBaruKonfirmasi">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Tambah User Baru
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/user/addUser}" method="POST">
+                            <div class="row form-group">
+                                <label class="col-sm-4">User Name</label>
+                                <input class="col-sm-8" type="text" name="username">
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4">Password: </label>
+                                <input class="col-sm-8" type="password" name="password">
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4">Role: </label>
+                                <input class="col-sm-8" type="text" name="role">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
         <div class="row">
             <div class="col-md-6">
                 <div class="card">

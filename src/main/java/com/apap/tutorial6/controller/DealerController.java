@@ -27,11 +27,6 @@ public class DealerController {
     @Autowired
     private CarService carService;
 
-    @RequestMapping("/")
-    private String home() {
-        return "home";
-    }
-
     @RequestMapping(value = "/dealer/add", method = RequestMethod.GET)
     private String add(Model model) {
         model.addAttribute("dealer", new DealerModel());
